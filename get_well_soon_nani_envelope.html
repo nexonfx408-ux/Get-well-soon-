@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffb6d5"><title>For Nani 💗</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"Trebuchet MS",system-ui,sans-serif}
+body{min-height:100vh;overflow:hidden;display:grid;place-items:center;color:#8e315f;background:linear-gradient(135deg,#ffe3ef,#ffb9d6 48%,#ffd9e8)}
+.glow{position:fixed;width:70vmin;height:70vmin;border-radius:50%;background:rgba(255,255,255,.35);filter:blur(35px);animation:breathe 5s ease-in-out infinite alternate}
+@keyframes breathe{to{transform:scale(1.22);opacity:.55}}
+.float-layer{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+.heart{position:absolute;bottom:-60px;text-shadow:0 4px 12px rgba(196,40,108,.2);animation:rise linear infinite;opacity:.8}
+@keyframes rise{0%{transform:translateY(0) rotate(0) scale(.7);opacity:0}12%{opacity:.85}85%{opacity:.75}100%{transform:translateY(-115vh) rotate(35deg) scale(1.25);opacity:0}}
+/* Envelope intro */
+.intro{position:fixed;inset:0;z-index:5;display:grid;place-items:center;background:linear-gradient(135deg,#ffe3ef,#ffacd0);transition:opacity .8s,visibility .8s}
+.intro.hide{opacity:0;visibility:hidden;pointer-events:none}
+.intro-inner{text-align:center;padding:20px}
+.intro h2{font-size:clamp(25px,7vw,36px);color:#c83d7e;margin:0 0 12px}
+.intro p{color:#9a4c70;margin:0 0 26px}
+.envelope{position:relative;width:min(76vw,310px);height:195px;margin:0 auto 28px;cursor:pointer;filter:drop-shadow(0 14px 18px rgba(164,48,102,.2));animation:float 2.5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-9px)}}
+.env-back{position:absolute;inset:0;background:#f06da7;border-radius:12px}
+.env-letter{position:absolute;left:9%;top:9%;width:82%;height:80%;background:#fff8fc;border-radius:8px;display:grid;place-items:center;color:#d43d82;font-size:20px;font-weight:bold;transition:transform .8s .15s;z-index:1}
+.env-front{position:absolute;inset:0;background:#ff8fbd;clip-path:polygon(0 100%,0 0,50% 58%,100% 0,100% 100%);border-radius:0 0 12px 12px;z-index:3}
+.env-flap{position:absolute;inset:0;background:#f45d9e;clip-path:polygon(0 0,100% 0,50% 60%);transform-origin:top;transition:transform .7s;z-index:4}
+.envelope.open .env-flap{transform:rotateX(180deg);z-index:0}
+.envelope.open .env-letter{transform:translateY(-105px)}
+.tap{display:inline-block;border:0;border-radius:999px;padding:13px 23px;background:#df4c91;color:white;font-weight:700;font-size:15px;box-shadow:0 8px 18px #d94d9144;cursor:pointer}
+.card{position:relative;z-index:2;width:min(88vw,440px);padding:34px 25px 30px;text-align:center;border:1px solid rgba(255,255,255,.85);border-radius:30px;background:rgba(255,255,255,.76);backdrop-filter:blur(12px);box-shadow:0 18px 55px rgba(166,49,103,.2);opacity:0;transform:translateY(22px) scale(.96);transition:opacity .8s,transform .8s;pointer-events:none}
+.card.show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+.flower{font-size:46px;display:inline-block;animation:sway 3s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(9deg)}}
+h1{margin:12px 0 8px;font-size:clamp(30px,8vw,42px);color:#d63384}.name{color:#a52b69}
+.subtitle{margin:0 auto 18px;font-size:16px;line-height:1.65;color:#8b4968}
+.divider{width:72px;height:3px;margin:18px auto;border-radius:10px;background:#f28ab7}
+.note{font-size:15px;line-height:1.8;margin:0 0 22px;color:#80435f}
+#loveButton{border:0;border-radius:999px;padding:13px 23px;cursor:pointer;color:white;font-size:15px;font-weight:700;background:linear-gradient(100deg,#ed5b9b,#d83b88);box-shadow:0 8px 18px rgba(216,59,136,.25)}
+#extra{min-height:28px;margin-top:16px;color:#c02c76;font-weight:700}
+.tiny{position:fixed;bottom:14px;left:0;right:0;z-index:2;text-align:center;color:#a44c75;font-size:11px;letter-spacing:1.5px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="glow"></div><div class="float-layer" id="floatLayer"></div>
+<section class="intro" id="intro">
+ <div class="intro-inner">
+  <h2>A little surprise for Nani 💌</h2>
+  <p>You have a special message waiting inside…</p>
+  <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the envelope">
+   <div class="env-back"></div><div class="env-letter">For Nani 💗</div><div class="env-front"></div><div class="env-flap"></div>
+  </div>
+  <button class="tap" id="openButton">Open your letter 💕</button>
+ </div>
+</section>
+<main class="card" id="card">
+ <div class="flower">🌷</div>
+ <h1>Get Well Soon,<br><span class="name">Nani</span> 💗</h1>
+ <p class="subtitle">Sending you a little sunshine, lots of love, and the warmest wishes.</p>
+ <div class="divider"></div>
+ <p class="note">Take good care of yourself and get plenty of rest.<br>May each new day bring you more strength,<br>comfort, and happiness. 🌸</p>
+ <button id="loveButton">Tap for a little love 💕</button><div id="extra" aria-live="polite"></div>
+</main>
+<div class="tiny">MADE WITH LOVE · FOR NANI</div>
+<script>
+const layer=document.getElementById('floatLayer'),symbols=['💗','💕','💖','💞','🌸','✨'];
+function addHeart(){const el=document.createElement('span');el.className='heart';el.textContent=symbols[Math.floor(Math.random()*symbols.length)];el.style.left=Math.random()*100+'vw';el.style.fontSize=(17+Math.random()*22)+'px';el.style.animationDuration=(7+Math.random()*7)+'s';el.style.animationDelay=(Math.random()*1.5)+'s';layer.appendChild(el);setTimeout(()=>el.remove(),16000)}
+for(let i=0;i<22;i++)setTimeout(addHeart,i*250);setInterval(addHeart,520);
+function openLetter(){const env=document.getElementById('envelope');env.classList.add('open');document.getElementById('openButton').disabled=true;setTimeout(()=>{document.getElementById('intro').classList.add('hide');document.getElementById('card').classList.add('show')},950)}
+document.getElementById('openButton').addEventListener('click',openLetter);
+document.getElementById('envelope').addEventListener('click',openLetter);
+document.getElementById('envelope').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLetter()}});
+const messages=['Sending you the biggest hug full of love! 💗','Rest well, Nani. You are loved more than you know. 🌷','One day at a time — wishing you brighter days ahead. ✨','A thousand little hearts are flying your way! 💕'];let index=0;
+document.getElementById('loveButton').addEventListener('click',()=>{document.getElementById('extra').textContent=messages[index++%messages.length];for(let i=0;i<9;i++)setTimeout(addHeart,i*90)});
+</script>
+</body></html>
